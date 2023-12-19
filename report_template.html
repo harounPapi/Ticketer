@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ entity_name }} - Report Overview</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      padding: 10px;
+      background-color: #fff;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .header, .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #eee;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .section {
+      margin-bottom: 15px;
+    }
+    .section-title {
+      font-size: 0.85em;
+      margin-bottom: 15px;
+    }
+    .content-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .table-container, .chart-container {
+      flex: 1;
+      padding: 10px;
+      page-break-inside: avoid;
+    }
+    .table-container {
+      max-width: 40%; /* Limit table width */
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      font-size: 0.6em;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .content-row {
+        flex-direction: column;
+      }
+      .table-container, .chart-container {
+        max-width: none; /* Full width on smaller screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h3>{{ entity_name }} - {{ total_hours }} hours, {{ total_days }} work days</h3>
+    </div>
+
+    <!-- Reported Tickets Section -->
+    <div class="section">
+      <div class="section-title">Reported Tickets Overview</div>
+      <div class="content-row">
+        <div class="table-container">
+          {{ reported_table | safe }}
+        </div>
+        <div class="chart-container">
+          <img src="{{ reported_chart }}" alt="Reported Tickets Pie Chart">
+        </div>
+      </div>
+    </div>
+
+    <!-- Assigned Tickets Section -->
+    <div class="section">
+      <div class="section-title">Assigned Tickets Overview</div>
+      <div class="content-row">
+        <div class="table-container">
+          {{ assigned_table | safe }}
+        </div>
+        <div class="chart-container">
+          <img src="{{ assigned_chart }}" alt="Assigned Tickets Pie Chart">
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Hours Section -->
+    <div class="section">
+      <div class="section-title">Average Per Ticket Overview</div>
+      <div class="content-row">
+        <div class="table-container">
+          {{ work_hours_table | safe }}
+        </div>
+        <div class="chart-container">
+          <img src="{{ work_hours_chart }}" alt="Work Hours Bar Chart">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
