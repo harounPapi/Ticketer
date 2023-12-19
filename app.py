@@ -214,9 +214,7 @@ def display_dashboard():
 
 
 def main():
-    st.set_page_config(page_title="Entity Data Analysis", layout="wide", page_icon="📊")
-
-    # Custom styles for the sidebar navigation
+    st.set_page_config(page_title="Ticketer", page_icon="📊")
     st.markdown("""
         <style>
         .css-18e3th9 {

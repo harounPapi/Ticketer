@@ -9,6 +9,13 @@ def img_to_base64_str(path):
         return base64.b64encode(img_file.read()).decode('utf-8')
 
 def generate_pdf_reports(entities_folder, output_folder, template_name):
+    # Ensure the entities folder exists
+    if not os.path.exists(entities_folder):
+        os.makedirs(entities_folder)
+    # Ensure the entities folder exists
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
     # Load the Jinja2 template
     env = Environment(loader=FileSystemLoader('.'))
     template = env.get_template(template_name)
